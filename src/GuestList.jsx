@@ -1,4 +1,4 @@
-export default function GuestList({ guests }) {
+export default function GuestList({ guests, setSelectedGuest }) {
   if (guests === undefined) {
     return <div>Loading</div>;
   }
@@ -15,7 +15,7 @@ export default function GuestList({ guests }) {
       <tbody>
         {guests.map((guest, idx) => {
           return (
-            <tr key={idx}>
+            <tr key={idx} onClick={() => setSelectedGuest(guest)}>
               <td>{guest.name}</td>
               <td>{guest.email}</td>
               <td>{guest.phone}</td>

@@ -5,6 +5,7 @@ const API_URL = "https://fsa-crud-2aa9294fe819.herokuapp.com/api/2504-FTB-ET-WEB
 
 export default function App() {
   const [guests, setGuests] = useState();
+  const [selectedGuest, setSelectedGuest] = useState();
 
   useEffect(() => {
     fetch(API_URL + "/guests")
@@ -22,8 +23,12 @@ export default function App() {
   return (
     <>
       <h1>Guest List</h1>
-      <GuestList guests={guests}></GuestList>
-      <GuestDetails></GuestDetails>
+      <GuestList guests={guests} setSelectedGuest={setSelectedGuest}></GuestList>
+      {selectedGuest ? (
+        <GuestDetails selectedGuest={selectedGuest} />
+      ) : (
+        <p>Select a guest to view more details</p>
+      )}
     </>
   );
 }
