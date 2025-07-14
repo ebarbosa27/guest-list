@@ -1,4 +1,8 @@
-export default function GuestList() {
+export default function GuestList({ guests }) {
+  if (guests === undefined) {
+    return <div>Loading</div>;
+  }
+
   return (
     <table style={{ border: "solid 1px black" }}>
       <thead>
@@ -8,7 +12,17 @@ export default function GuestList() {
           <th>Phone</th>
         </tr>
       </thead>
-      <tbody>{/* logic to loop through guest list */}</tbody>
+      <tbody>
+        {guests.map((guest, idx) => {
+          return (
+            <tr key={idx}>
+              <td>{guest.name}</td>
+              <td>{guest.email}</td>
+              <td>{guest.phone}</td>
+            </tr>
+          );
+        })}
+      </tbody>
     </table>
   );
 }
