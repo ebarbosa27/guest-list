@@ -12,7 +12,6 @@ export default function App() {
       .then(async (res) => {
         const resJSON = await res.json();
         const data = resJSON.data;
-
         setGuests(data);
       })
       .catch((err) => {
@@ -23,15 +22,18 @@ export default function App() {
   return (
     <>
       <h1>Guest List</h1>
-      <GuestList
-        guests={guests}
-        selectedGuest={selectedGuest}
-        setSelectedGuest={setSelectedGuest}
-      ></GuestList>
+
       {selectedGuest ? (
         <GuestDetails selectedGuest={selectedGuest} setSelectedGuest={setSelectedGuest} />
       ) : (
-        <p>Select a guest to view more details</p>
+        <>
+          <GuestList
+            guests={guests}
+            selectedGuest={selectedGuest}
+            setSelectedGuest={setSelectedGuest}
+          />
+          <p>Select a guest to view more details</p>
+        </>
       )}
     </>
   );

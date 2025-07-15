@@ -1,5 +1,4 @@
 export default function GuestDetails({ selectedGuest, setSelectedGuest }) {
-  console.log(selectedGuest);
   return (
     <div>
       <p>Name: {selectedGuest.name}</p>
