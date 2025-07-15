@@ -1,0 +1,27 @@
+table {
+  border-spacing: 0;
+}
+
+table tbody {
+}
+
+table tbody tr {
+}
+
+table tbody tr td {
+  padding: 0.2rem 1rem;
+}
+
+.listItem {
+  cursor: pointer;
+}
+
+.listItem:hover {
+  background-color: rgb(220, 220, 220);
+  scale: 1.02;
+}
+
+.selectedItem {
+  background-color: rgb(210, 210, 210);
+  font-weight: bold;
+}

@@ -1,4 +1,6 @@
-export default function GuestList({ guests, setSelectedGuest }) {
+import "./list.css";
+
+export default function GuestList({ guests, selectedGuest, setSelectedGuest }) {
   if (guests === undefined) {
     return <div>Loading</div>;
   }
@@ -14,8 +16,14 @@ export default function GuestList({ guests, setSelectedGuest }) {
       </thead>
       <tbody>
         {guests.map((guest, idx) => {
+          let selectedClass = false;
+          if (selectedGuest && guest.id === selectedGuest.id) selectedClass = true;
           return (
-            <tr key={idx} onClick={() => setSelectedGuest(guest)}>
+            <tr
+              key={idx}
+              onClick={() => setSelectedGuest(guest)}
+              className={selectedClass ? "listItem selectedItem" : "listItem"}
+            >
               <td>{guest.name}</td>
               <td>{guest.email}</td>
               <td>{guest.phone}</td>
